@@ -13,7 +13,7 @@ db.init_app(app)
 def index():
     return '<h1>Superheroes API</h1>'
 
-# GET /heroes
+
 @app.route('/heroes')
 def get_heroes():
     heroes = Hero.query.all()
@@ -23,7 +23,7 @@ def get_heroes():
         "super_name": hero.super_name
     } for hero in heroes])
 
-# GET /heroes/:id
+
 @app.route('/heroes/<int:id>')
 def get_hero_by_id(id):
     hero = Hero.query.get(id)
@@ -49,7 +49,7 @@ def get_hero_by_id(id):
         ]
     })
 
-# GET /powers
+
 @app.route('/powers')
 def get_powers():
     powers = Power.query.all()
@@ -59,7 +59,7 @@ def get_powers():
         "description": power.description
     } for power in powers])
 
-# GET /powers/:id
+
 @app.route('/powers/<int:id>')
 def get_power_by_id(id):
     power = Power.query.get(id)
@@ -72,7 +72,7 @@ def get_power_by_id(id):
         "description": power.description
     })
 
-# PATCH /powers/:id
+
 @app.route('/powers/<int:id>', methods=['PATCH'])
 def update_power(id):
     power = Power.query.get(id)
@@ -94,7 +94,7 @@ def update_power(id):
         "description": power.description
     })
 
-# POST /hero_powers
+
 @app.route('/hero_powers', methods=['POST'])
 def create_hero_power():
     data = request.get_json()
